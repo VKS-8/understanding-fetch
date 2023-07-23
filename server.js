@@ -15,9 +15,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Initialize the app
 app.use(express.static('website'));
 
+// Global variables
+const apiKEY = process.env.API_KEY;
 
 async function getData () {
-  const response = await fetch('http://api.openweathermap.org/data/2.5/weather?zip=74401,US&units=imperial&appid=9a6f38cd817b93e366a58123f0a05b6e');
+  const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=74401,US&units=imperial&appid=${apiKEY}`);
   const responseData = await response.json();
   console.log(responseData);
 }
