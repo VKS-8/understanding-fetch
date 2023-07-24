@@ -1,3 +1,12 @@
+// Function to convert the input value to upper case
+function convertToUpperCase() {
+  let countryCodeInput = document.getElementById("countryCode");
+  countryCodeInput.value = countryCodeInput.value.toUpperCase();
+}
+
+// Add an event listener to the input field to handle input changes
+document.getElementById("countryCode").addEventListener("input", convertToUpperCase);
+
 const form = document.getElementById('clientForm');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
