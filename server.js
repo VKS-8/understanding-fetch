@@ -24,6 +24,18 @@ async function getData () {
 
 getData();
 
+app.get('/', (req, res) => {
+  res.sendFile('./website/index.html', { root: __dirname });
+});
+
+// 404 page per this YouTube tutorial:
+// https://www.youtube.com/watch?v=Lr9WUkeYSA8&t=624s
+// The Net Ninja
+// Node.js Crash Course #6 - Express Apps
+app.use((req, res) => {
+  res.status(404).sendFile('./website/404.html', { root: __dirname});
+});
+
 // Setup Server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
