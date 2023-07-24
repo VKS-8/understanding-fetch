@@ -24,6 +24,11 @@ app.use(express.static('website'));
 
 // getData();
 
+// Set this GET route up per viewing this YouTube channel
+// https://www.youtube.com/watch?v=Lr9WUkeYSA8
+// The Net Ninja
+// Node.js Crash Course #6 - Express Apps
+ 
 app.get('/', (req, res) => {
   res.sendFile('./website/index.html', { root: __dirname });
 });
