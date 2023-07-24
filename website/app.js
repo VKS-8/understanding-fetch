@@ -2,7 +2,7 @@ const form = document.getElementById('clientForm');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(form);
-  const { zip, countryCode, units, feelings } = Object.fromEntries(formData);
+  const { zip, countryCode, units } = Object.fromEntries(formData);
 
   try {
     const response = await fetch('/', {
@@ -10,7 +10,7 @@ form.addEventListener('submit', async (e) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ zip, countryCode, units, feelings }),
+      body: JSON.stringify({ zip, countryCode, units }),
     });
 
     if (response.ok) {
