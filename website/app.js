@@ -14,7 +14,7 @@ form.addEventListener('submit', async (e) => {
   const { zip, countryCode, units } = Object.fromEntries(formData);
 
   try {
-    const response = await fetch('http://localhost:5501', {
+    const response = await fetch('http://localhost:5501/website', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

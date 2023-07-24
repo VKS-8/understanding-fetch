@@ -3,6 +3,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const port = 5501
 
+// Start an instance of the express app; must be above the app.use expressions
+
 const app = express();
 
 
@@ -24,11 +26,11 @@ app.use(express.static('website'));
 
 // getData();
 
-// Set this GET route up per viewing this YouTube channel
+// Set this GET route up per viewing this YouTube tutorial
 // https://www.youtube.com/watch?v=Lr9WUkeYSA8
 // The Net Ninja
 // Node.js Crash Course #6 - Express Apps
- 
+
 app.get('/', (req, res) => {
   res.sendFile('./website/index.html', { root: __dirname });
 });
@@ -42,7 +44,7 @@ app.use((req, res) => {
 });
 
 // The following POST code was the help of chatGPT
-app.post('http://localhost:5501', (req, res) => {
+app.post('http://localhost:5501/website/', (req, res) => {
   const {zip, countryCode, units } = req.body;
 
   // Parse the URL to get the necessary components for the HTTP/HTTPS request
