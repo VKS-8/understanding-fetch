@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require('path');
 const port = 5501
 
 // Start an instance of the express app; must be above the app.use expressions
@@ -44,12 +45,13 @@ app.use((req, res) => {
 });
 
 // The following POST code was the help of chatGPT
-app.post('http://localhost:5501/website/', (req, res) => {
+app.post('http://localhost:5501/', (req, res) => {
   const {zip, countryCode, units } = req.body;
+  console.log(req.body);
 
   // Parse the URL to get the necessary components for the HTTP/HTTPS request
   const apiUrl = `http://api.openweathermap/data/2.5/weather?zip=${zip},${countryCode}&units=${units}&appid=9a6f38cd817b93e366a58123f0a05b6e`;
-  const url = new URL(apiURL);
+  const url = new URL(apiUrl);
   const protocol = url.protocol === "https:" ? https : http;
   const options = {
     hostname: url.hostname,
@@ -78,6 +80,8 @@ app.post('http://localhost:5501/website/', (req, res) => {
 
   request.end();
 });
+
+
 
 // Setup Server
 app.listen(port, "0.0.0.0", () => {
