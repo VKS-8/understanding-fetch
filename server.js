@@ -46,11 +46,11 @@ app.use((req, res) => {
 
 // The following POST code was the help of chatGPT
 app.post('http://localhost:5501/', (req, res) => {
-  const {zip, countryCode, units } = req.body;
+  const { zip, countryCode, units } = req.body;
   console.log(req.body);
 
   // Parse the URL to get the necessary components for the HTTP/HTTPS request
-  const apiUrl = `http://api.openweathermap/data/2.5/weather?zip=${zip},${countryCode}&units=${units}&appid=9a6f38cd817b93e366a58123f0a05b6e`;
+  const apiUrl = `http://api.openweathermap.org/data/2.5/weather?zip=${zip},${countryCode}&units=${units}&appid=9a6f38cd817b93e366a58123f0a05b6e`;
   const url = new URL(apiUrl);
   const protocol = url.protocol === "https:" ? https : http;
   const options = {
