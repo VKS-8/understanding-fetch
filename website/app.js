@@ -13,7 +13,7 @@ const form = document.getElementById('clientForm');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(form);
-  const { zip, countryCode, units } = Object.fromEntries(formData);
+  const { zip, countryCode, units, feelings } = Object.fromEntries(formData);
 
   try {
     const response = await fetch('http://localhost:5501/', {
