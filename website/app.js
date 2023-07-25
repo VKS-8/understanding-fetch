@@ -1,3 +1,5 @@
+// Used chatGPT to figure out how to set the country code to uppercase in the form
+// as soon as the user entered
 // Function to convert the input value to upper case
 function convertToUpperCase() {
   let countryCodeInput = document.getElementById("countryCode");
@@ -14,7 +16,7 @@ form.addEventListener('submit', async (e) => {
   const { zip, countryCode, units } = Object.fromEntries(formData);
 
   try {
-    const response = await fetch('http://localhost:5501/website', {
+    const response = await fetch('http://localhost:5501/', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,3 +34,4 @@ form.addEventListener('submit', async (e) => {
     console.error("Error:", error);
   }
 });
+
