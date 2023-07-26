@@ -1,13 +1,18 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const http = require('http');
+const https = require('https');
 // const path = require('path');
 const port = 5501
 
 // Start an instance of the express app; must be above the app.use expressions
 const app = express();
 
-app.use(express());
+// app.use(express()); COMMENTED this out because chatGPT said the following so testing:
+// Remove the app.use(express()); line:
+// The express() function returns an instance of the Express application, so you don't need to use it again with app.use().
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,7 +48,7 @@ app.use((req, res) => {
 });
 
 // The following POST code was the help of chatGPT
-app.post('http://localhost:5501/clientInput', (req, res) => {
+app.post('/clientInput', (req, res) => {
   const { zip, country, units } = req.body;
   console.log(req.body);
 
