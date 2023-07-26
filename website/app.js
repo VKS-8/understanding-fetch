@@ -9,6 +9,9 @@ function convertToUpperCase() {
 // Add an event listener to the input field to handle input changes
 document.getElementById("country").addEventListener("input", convertToUpperCase);
 
+
+// Used chatGPT to determine how to set up proper parameters from form to
+// post to server
 const form = document.getElementById('clientForm');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
