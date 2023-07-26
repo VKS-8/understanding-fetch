@@ -1,31 +1,29 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const path = require('path');
+// const path = require('path');
 const port = 5501
 
 // Start an instance of the express app; must be above the app.use expressions
-
 const app = express();
-
 
 app.use(express());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 // Initialize the app
 app.use(express.static('website'));
 
 // This hard coded api url does fetch the weather data object from open weather map
-// async function getData () {
-//   const response = await fetch('http://api.openweathermap.org/data/2.5/weather?zip=74401,US&units=imperial&appid=9a6f38cd817b93e366a58123f0a05b6e');
-//   const responseData = await response.json();
-//   console.log(responseData);
-// }
+async function getData () {
+  const response = await fetch('http://api.openweathermap.org/data/2.5/weather?zip=74401,US&units=imperial&appid=9a6f38cd817b93e366a58123f0a05b6e');
+  const responseData = await response.json();
+  console.log(responseData);
+}
 
-// getData();
+// Test api with hard coded params
+getData();
 
 // Set this GET route up per viewing this YouTube tutorial
 // https://www.youtube.com/watch?v=Lr9WUkeYSA8
@@ -45,12 +43,12 @@ app.use((req, res) => {
 });
 
 // The following POST code was the help of chatGPT
-app.post('http://localhost:5501/', (req, res) => {
-  const { zip, countryCode, units } = req.body;
+app.post('http://localhost:5501/clientInput', (req, res) => {
+  const { zip, country, units } = req.body;
   console.log(req.body);
 
   // Parse the URL to get the necessary components for the HTTP/HTTPS request
-  const apiUrl = `http://api.openweathermap.org/data/2.5/weather?zip=${zip},${countryCode}&units=${units}&appid=9a6f38cd817b93e366a58123f0a05b6e`;
+  const apiUrl = `http://api.openweathermap.org/data/2.5/weather?zip=${zip},${country}&units=${units}&appid=9a6f38cd817b93e366a58123f0a05b6e`;
   const url = new URL(apiUrl);
   const protocol = url.protocol === "https:" ? https : http;
   const options = {
@@ -80,8 +78,6 @@ app.post('http://localhost:5501/', (req, res) => {
 
   request.end();
 });
-
-
 
 // Setup Server
 app.listen(port, "0.0.0.0", () => {
