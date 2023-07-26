@@ -1,14 +1,16 @@
-const global = {
-  currentPage: window.location.pathname,
-};
+// This was just to test how to set up a seperate routes file
 
-// Init App
-function init() {
-  switch (global.currentPage) {
-    case '/':
-      console.log('Home');
-      break;
-  }
-}
+// const global = {
+//   currentPage: window.location.pathname,
+// };
 
-document.addEventListener('DOMContentLoaded', init);
+// // Init App
+// function init() {
+//   switch (global.currentPage) {
+//     case '/':
+//       console.log('Home');
+//       break;
+//   }
+// }
+
+// document.addEventListener('DOMContentLoaded', init);
