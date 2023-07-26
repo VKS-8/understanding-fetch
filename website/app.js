@@ -2,26 +2,26 @@
 // as soon as the user entered
 // Function to convert the input value to upper case
 function convertToUpperCase() {
-  let countryCodeInput = document.getElementById("countryCode");
+  let countryCodeInput = document.getElementById("country");
   countryCodeInput.value = countryCodeInput.value.toUpperCase();
 }
 
 // Add an event listener to the input field to handle input changes
-document.getElementById("countryCode").addEventListener("input", convertToUpperCase);
+document.getElementById("country").addEventListener("input", convertToUpperCase);
 
 const form = document.getElementById('clientForm');
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const formData = new FormData(form);
-  const { zip, countryCode, units, feelings } = Object.fromEntries(formData);
+  const { zip, country, units } = Object.fromEntries(formData);
 
   try {
-    const response = await fetch('http://localhost:5501/', {
+    const response = await fetch('http://localhost:5501/clientInput', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ zip, countryCode, units }),
+      body: JSON.stringify({ zip, country, units }),
     });
 
     if (response.ok) {
