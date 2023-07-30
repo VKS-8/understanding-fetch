@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const http = require('http');
-const https = require('https');
+// const http = require('http');
+// const https = require('https');
 require('dotenv').config();
 // const path = require('path');
 const port = 5501
@@ -36,11 +36,14 @@ async function getData () {
 // Test api with hard coded params
 getData();
 
+app.get('/', (req, res) => {
+  res.send('Welcome to your server');
+});
+
 // Set this GET route up per viewing this YouTube tutorial
 // https://www.youtube.com/watch?v=Lr9WUkeYSA8
 // The Net Ninja
 // Node.js Crash Course #6 - Express Apps
-
 // app.get('/', (req, res) => {
 //   res.sendFile('./website/index.html', { root: __dirname });
 // });
