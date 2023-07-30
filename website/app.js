@@ -1,4 +1,7 @@
-const serverUrl = 'http://localhost:5501'
+const serverUrl = 'http://localhost:5501';
+// const path = __dirname + '/clientInput';
+// app.use('/clientInput', express.static(path));
+
 
 // Used chatGPT to figure out how to set the country code to uppercase in the form
 // as soon as the user entered
@@ -13,7 +16,7 @@ document.getElementById("country").addEventListener("input", convertToUpperCase)
 
 async function fetchData(endpoint, data) {
   try {
-    const response = await fetch(`/${endpoint}`, {
+    const response = await fetch(`${endpoint}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -53,5 +56,5 @@ document.getElementById('clientInput').addEventListener('submit', async (e) => {
     console.error('Error:', error.message);
     throw error;
   }
-})();
+});
 
