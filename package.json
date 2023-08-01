@@ -1,8 +1,8 @@
 {
   "name": "understanding-fetch",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "attempt to send client data to server to fetch from external api and return data to client UI",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"

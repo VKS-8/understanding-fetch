@@ -1,10 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-// const http = require('http');
-// const https = require('https');
 require('dotenv').config();
-// const path = require('path');
 const port = 5501
 
 // Start an instance of the express app; must be above the app.use expressions
