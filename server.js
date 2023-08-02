@@ -62,8 +62,8 @@ app.post('http://localhost:5500', async (req, res) => {
   const {zip, country, units, feelings } = req.body;
 
   // Add params to projectData object
-    projectData.feelings = feelings;
-
+  projectData.push(req.body);
+  
   console.log(projectData);
 
   const apiUrl = `${baseUrl}zip=${zip},${country}&units=${units}&appid=${apiKey}`;

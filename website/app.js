@@ -38,28 +38,32 @@ function convertToUpperCase() {
 // Add an event listener to the input field to handle input changes
 document.getElementById('country').addEventListener('input', convertToUpperCase);
 
-async function fetchData(url, data) {
-  try {
-    const response = await fetch(`${serverUrl}`, {
+const fetchData = async (url = '', projectData = {}) => {
+  console.log(projectData);
+
+    const response = await fetch(serverUrl, {
       method: 'POST',
       credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(projectData),
     });
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok.');
+    try {
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
+      }
+      const responseData = await response.json();
+      console.log(responseData);
+      return responseData;
+    } catch (error) {
+      console.error('Error:', error.message);
+      throw error;
     }
-    const responseData = await response.json();
-    return responseData;
-  } catch (error) {
-    console.error('Error:', error.message);
-    throw error;
-  }
 }
 
+fetchData('http://localhost:5501', projectData); // really not sure about second param
 
 // Used chatGPT to determine how to set up proper parameters from form to
 // post to server
