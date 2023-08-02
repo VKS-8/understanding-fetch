@@ -7,6 +7,10 @@ const port = 5501
 // Start an instance of the express app; must be above the app.use expressions
 const app = express();
 
+const projectData = {
+  "server": "can you see me?"
+};
+
 // app.use(express()); COMMENTED this out because chatGPT said the following so testing:
 // Remove the app.use(express()); line:
 // The express() function returns an instance of the Express application, so you don't need to use it again with app.use().
@@ -34,8 +38,17 @@ async function getData () {
 getData();
 
 app.get('/', (req, res) => {
+  res.send('Home Page!')
+})
+
+app.get('/website', (req, res) => {
   res.send('Welcome to your server');
 });
+
+app.get('http://localhost:5501', function (req, res) {
+
+  return projectData;
+})
 
 // Set this GET route up per viewing this YouTube tutorial
 // https://www.youtube.com/watch?v=Lr9WUkeYSA8
@@ -45,14 +58,18 @@ app.get('/', (req, res) => {
 //   res.sendFile('./website/index.html', { root: __dirname });
 // });
 
-// The following POST code was the help of chatGPT
-app.post('/clientInput', async (req, res) => {
+app.post('http://localhost:5500', async (req, res) => {
   const {zip, country, units, feelings } = req.body;
-  console.log(req.body);
+
+  // Add params to projectData object
+    projectData.feelings = feelings;
+
+  console.log(projectData);
 
   const apiUrl = `${baseUrl}zip=${zip},${country}&units=${units}&appid=${apiKey}`;
-
   try {
+    res.send('POST received');
+
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
@@ -68,16 +85,16 @@ app.post('/clientInput', async (req, res) => {
     day: 'numeric'
   });
 
-  const combinedData = {
+  projectData = {
     currentDate: formatDate,
     temp: weatherData.main.temp,
     name: weatherData.name,
     feelings: feelings
   }
 
-  console.log(combinedData);
+  console.log(projectData);
 
-  res.json(combinedData);
+  res.json(projectData);
 
 } catch (error) {
   console.error('Error making request to API', error);
@@ -94,6 +111,6 @@ app.use((req, res) => {
 });
 
 // Setup Server
-app.listen(port, "0.0.0.0", () => {
+const server = app.listen(port, "0.0.0.0", () => {
   console.log(`Server running on http://localhost:${port}`);
 });

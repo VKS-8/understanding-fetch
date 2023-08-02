@@ -20,7 +20,7 @@ function checkIfNode() {
     console.log('Yes, Node');
   }
 }
-// Current result of above checks: not running in the browser, yes, node
+// Current result of above checks: not running in the browser, yes, node when running in Chrome
 
 
 // const path = __dirname + '/clientInput';
@@ -38,9 +38,9 @@ function convertToUpperCase() {
 // Add an event listener to the input field to handle input changes
 document.getElementById('country').addEventListener('input', convertToUpperCase);
 
-async function fetchData(endpoint, data) {
+async function fetchData(url, data) {
   try {
-    const response = await fetch(`${serverUrl}${endpoint}`, {
+    const response = await fetch(`${serverUrl}`, {
       method: 'POST',
       credentials: 'same-origin',
       headers: {
@@ -70,7 +70,7 @@ document.getElementById('clientInput').addEventListener('submit', async (e) => {
   const userData = Object.fromEntries(formData.entries());
 
   try {
-    const serverData = await fetchData('/clientInput', userData);
+    const serverData = await fetchData(`${serverUrl}`, userData);
 
     if (!response.ok) {
       throw new Error('Network response was not ok.');
