@@ -71,15 +71,6 @@ flex-direction: column;
   width: 80%;
 }
 
-#date{
-
-
-}
-
-#temp{
-
-}
-
 #content{
   display: flex;
   flex-direction: column;
