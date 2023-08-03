@@ -13,6 +13,15 @@
   <div class ="holder headline">
     <h1>My Weather Journal</h1>
   </div>
+  <div class ="holder entry">
+    <div id="notificationPopUp"></div>
+    <div class = "title">Today's Entry</div>
+    <div id = "entryHolder">
+      <div id = "date">testdate</div>
+      <div id = "temp">testtemp</div>
+      <div id = "content">testcontent <img class="weatherIcon" src=`https://openweathermap.org/img/wn/${projectData.icon}@2x.png` alt="weather icon"> </div>
+    </div>
+  </div>
   <form id="clientForm" action="/" method: "POST">
     <div class ="holder zip">
       <label for="zip">Enter Zipcode here</label>
@@ -33,15 +42,6 @@
       <button id="generate" type = "submit"> Generate </button>
     </div>
   </form>
-  <div class ="holder entry">
-    <div id="notificationPopUp"></div>
-    <div class = "title">Most Recent Entry</div>
-    <div id = "entryHolder">
-      <div id = "date"></div>
-      <div id = "temp"></div>
-      <div id = "content"></div>
-    </div>
-  </div>
   </div>
 <script src="app.js"></script>
 </body>
