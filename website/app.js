@@ -60,7 +60,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         const responseData = await response.json();
         console.log(responseData);
-        return responseData;
+        // return responseData;
+
+        const {currentDate, temp, feelings, icon} = responseData;
+
+        document.querySelector('#date').innerText = `${currentDate}`;
+        document.querySelector('#temp').innerText = `${temp}`;
+        document.querySelector('#content').innerText = `${feelings}`;
+        // document.querySelector('.weatherIcon').innerText = `${icon}`;
       } catch (error) {
         console.error('Error:', error.message);
         throw error;
