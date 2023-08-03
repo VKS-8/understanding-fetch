@@ -76,7 +76,7 @@ app.post('/', async (req, res) => {
 
   const data = await response.json();
   console.log(data);
-    projectData.temp = data.main.temp;
+    projectData.temp = Math.round(data.main.temp);
     projectData.city = data.name;
     projectData.icon = data.weather[0].icon;
   console.log('Sending response from the server: ', projectData);
