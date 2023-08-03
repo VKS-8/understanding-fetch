@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const {currentDate, temp, feelings, icon} = responseData;
 
         document.querySelector('#date').innerText = `${currentDate}`;
-        document.querySelector('#temp').innerText = `${temp}`;
+        document.querySelector('#temp').innerText = `${temp}°F`;
         document.querySelector('#content').innerText = `${feelings}`;
         // document.querySelector('.weatherIcon').innerText = `${icon}`;
       } catch (error) {
