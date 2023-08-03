@@ -16,7 +16,7 @@ body{
   display: grid;
   grid-auto-rows: minmax(150px, auto);
   grid-template-columns: 1fr;
-  height:100vh;
+  height:auto;
   background: #f23557;
   color: #f0d43a;
   justify-content: center;
@@ -27,27 +27,52 @@ body{
 }
 
 .holder{
-  margin: 2rem auto;
   display: flex;
   flex-direction: column;
+  height: auto;
+  width: 100%;
+  margin: 5rem auto;
+  padding: 1rem;
+}
+
+.units, .zip, .feel, .headline, .entry {
+  margin: 0;
+}
+
+.entry{
+  background: rgba(59, 74, 107, 0.8);
+  height: auto;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.weatherIcon {
+  margin: 0.5rem auto;
+  height: auto;
+  width: 100%;
+}
+
+#notificationPopUp {
+  display: flex;
+  height: 25%;
+  width: 80%;
+  background: rgba(59, 74, 107, .4);
+}
+
+
+#entryHolder{
+display: flex;
+flex-direction: column;
+}
+#date, #temp, #content {
+  background: rgba(123, 146, 195, 0.8);
+  margin: 0.25rem auto;
+  padding: 0.25rem;
   width: 80%;
 }
 
-
-.entry{
-  background: rgba(59, 74, 107, .4);
-  position: absolute;
-  top: 8rem;
-  right: 3rem;
-  width: 30%;
-}
-
-
-.entryHolder{
-
-}
-
 #date{
+
 
 }
 
@@ -56,6 +81,9 @@ body{
 }
 
 #content{
+  display: flex;
+  flex-direction: column;
+  height:auto;
 
 }
 
@@ -65,12 +93,9 @@ h1, .title, .units {
 
 .title{
   display: block;
+  height: auto;
   width: 100%;
-  margin: 1rem auto;
-
-}
-
-.units {
+  margin: 0.25rem auto;
 
 }
 
@@ -78,6 +103,7 @@ h1, .title, .units {
 label{
   display:block;
   font-size: 27px;
+  background: rgba(59, 74, 107, .4),
 }
 
 input{
