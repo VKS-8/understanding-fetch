@@ -11,7 +11,7 @@ The project dependencies include the 'cors' and 'body-parser' packages.
 + Obtain developer API credentials from the OpenWeatherMap.org api
 + Set up an object on the server-side to act as the API endpoint
 + API key is set up as a variable and passed to the fetch() method which successfully returns data
-+ Asynchronous code should be used all with GET and POST methods
++ Asynchronous code should be used along with GET and POST methods
 + Promise chaining should be used
 
 ## Success Criteria
