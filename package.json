@@ -6,7 +6,7 @@
   "homepage": " https://vks-8.github.io/weather-journal-app/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "VK Johnson",
