@@ -7,7 +7,7 @@ const port = 5501
 // Start an instance of the express app; must be above the app.use expressions
 const app = express();
 
-const projectData = {
+let projectData = {
   "server": "can you see me?"
 };
 
@@ -45,38 +45,19 @@ app.get('/website', (req, res) => {
   res.send('Welcome to your server');
 });
 
-app.get('http://localhost:5501', function (req, res) {
-
+app.get('/', function (req, res) {
+  console.log(projectData);
   return projectData;
-})
+});
 
-// Set this GET route up per viewing this YouTube tutorial
-// https://www.youtube.com/watch?v=Lr9WUkeYSA8
-// The Net Ninja
-// Node.js Crash Course #6 - Express Apps
-// app.get('/', (req, res) => {
-//   res.sendFile('./website/index.html', { root: __dirname });
-// });
-
-app.post('http://localhost:5500', async (req, res) => {
-  const {zip, country, units, feelings } = req.body;
+app.post('/', async (req, res) => {
+  const {zip, country, units, feelings} = req.body;
 
   // Add params to projectData object
-  projectData.push(req.body);
-  
-  console.log(projectData);
-
-  const apiUrl = `${baseUrl}zip=${zip},${country}&units=${units}&appid=${apiKey}`;
-  try {
-    res.send('POST received');
-
-    const response = await fetch(apiUrl);
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch data from API');
-    }
-
-  const weatherData = await response.json();
+  projectData.zip = zip;
+  projectData.country = country;
+  projectData.units = units;
+  projectData.feelings = feelings;
 
   const currentDate = new Date();
   const formatDate = currentDate.toLocaleDateString('en-US', {
@@ -85,18 +66,28 @@ app.post('http://localhost:5500', async (req, res) => {
     day: 'numeric'
   });
 
-  projectData = {
-    currentDate: formatDate,
-    temp: weatherData.main.temp,
-    name: weatherData.name,
-    feelings: feelings
-  }
+  projectData.currentDate = formatDate;
 
   console.log(projectData);
 
-  res.json(projectData);
+  const apiUrl = `${baseUrl}zip=${projectData.zip},${projectData.country}&units=${projectData.units}&appid=${apiKey}`;
 
-} catch (error) {
+  try {
+  const response = await fetch(apiUrl);
+
+  if (!response.ok) {
+    throw new Error('API request failed');
+  }
+
+  const data = await response.json();
+  console.log(data);
+    projectData.temp = data.main.temp;
+    projectData.city = data.name;
+  console.log('Sending response from the server: ', projectData);
+  res.json(projectData);
+  } catch (error) {
+
+  // Handle errors
   console.error('Error making request to API', error);
   res.status(500).json({ error: "Failed to fetch data from API" });
 }
