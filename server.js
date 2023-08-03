@@ -45,11 +45,6 @@ app.get('/website', (req, res) => {
   res.send('Welcome to your server');
 });
 
-app.get('/', function (req, res) {
-  console.log(projectData);
-  return projectData;
-});
-
 app.post('/', async (req, res) => {
   const {zip, country, units, feelings} = req.body;
 
