@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const userData = Object.fromEntries(formData.entries());
 
     const fetchData = async (url = '', data = {}) => {
-      console.log(projectData);
+      console.log(data);
 
-      const response = await fetch('/', {
+      const response = await fetch('http://localhost:5501/', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
