@@ -59,11 +59,11 @@ body{
   background: rgba(59, 74, 107, .4);
 }
 
-
 #entryHolder{
 display: flex;
 flex-direction: column;
 }
+
 #date, #temp, #content {
   background: rgba(123, 146, 195, 0.8);
   margin: 0.25rem auto;
@@ -132,6 +132,7 @@ textarea{
   font-size: 20px;
   font-family: 'Oswald', sans-serif;
 }
+
 /* Reset style for HTML element on active to have no border*/
 input:focus,
 select:focus,
