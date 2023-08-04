@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "attempt to send client data to server to fetch from external api and return data to client UI",
   "main": "index.js",
-  "homepage": " https://vks-8.github.io/weather-journal-app/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
